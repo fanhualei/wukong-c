@@ -182,9 +182,50 @@ $(BIN)/$(EXEC):$(SRC)/*
 }
 ```
 
+* `tasks.json`
+
+  执行了make命令
+
+```json
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+        }
+    ]
+}
+```
+
+[变量参考](https://code.visualstudio.com/docs/editor/variables-reference)
 
 
 
+### 学习类型项目
+
+这类项目有很多单一的可执行文件，所以不用makefile来编译，可以使用vscode自带的编译与debug工具来执行．
+
+
+
+> 怎么建立这样的工程呢？
+
+```
+1:建立一个空目录．
+2:使用vscode打开这个目录
+3:建立一个src目录，然后在里面建立一个子目录后，建立main.c,写入一个最简单的程序．
+4:打开vscode的debug工具，按照提示建立一个launch.json,然后执行，按照提示建立一个gcc的tasks.json
+5:这时候可以执行这个程序
+```
 
 
 
