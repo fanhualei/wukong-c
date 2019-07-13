@@ -227,9 +227,13 @@ $(BIN)/$(EXEC):$(SRC)/*
 5:这时候可以执行这个程序
 ```
 
+如果不想自己编辑上述文件，[就从github上下载代码](https://github.com/fanhualei/wukong-c/tree/master/example-study)
 
+> 程序的规则
 
-
+* 参考了，[菜鸟－C 语言教程](https://www.runoob.com/cprogramming/c-tutorial.html)
+* 代码中的注释，有菜鸟网站对应的HTTP地址．
+* 每个章节一个目录，如果没有代码的章节，没有目录，跳过．
 
 
 
