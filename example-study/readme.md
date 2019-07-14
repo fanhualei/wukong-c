@@ -6,6 +6,14 @@
 
 ## 知识关键点
 
+
+
+### linux
+
+后台执行：nohup和&的区别
+
+
+
 ### 关键字
 
 > [参考文档](<https://www.runoob.com/cprogramming/c-basic-syntax.html>)
@@ -83,6 +91,12 @@ double:8字节
 
 
 
+
+
+
+
+
+
 ### printf参数说明
 
 ```
@@ -139,4 +153,48 @@ struct bs{
 ```
 
 
+
+### 输入输出
+
+* printf & scanf
+* getchar & putchar
+* gets & puts
+
+scanf更高级
+
+```c
+#include <stdio.h>
+int main( ) {
+ 
+   char str[100];
+   int i;
+ 
+   printf( "Enter a value :");
+   scanf("%s %d", str, &i);
+ 
+   printf( "\nYou entered: %s %d ", str, i);
+   printf("\n");
+   return 0;
+}
+
+```
+
+
+
+### 文件操作
+
+* fopen(name mode)
+* fclose(fp)
+* fputc & fgetc
+* fputs & fgets
+* fscanf
+* fprintf
+
+
+
+### 字符串
+
+> 参考文档
+
+* [字符串知识](https://wenku.baidu.com/view/c45ab62b68eae009581b6bd97f1922791688be92.html)
 

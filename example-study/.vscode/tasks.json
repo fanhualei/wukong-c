@@ -8,10 +8,13 @@
             "label": "gcc build active file",
             "command": "/usr/bin/gcc",
             "args": [
-                "-g",
+                
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.out"
+                "${fileDirname}/${fileBasenameNoExtension}.out",
+                "-Wall",
+                "-Wextra",
+                "-g"    
             ],
             "options": {
                 "cwd": "/usr/bin"

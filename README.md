@@ -209,6 +209,16 @@ $(BIN)/$(EXEC):$(SRC)/*
 
 [变量参考](https://code.visualstudio.com/docs/editor/variables-reference)
 
+> c_ccp_properties.json
+
+用`Ctr`+`Shift`+`p`打开对话框，然后选择`C/C++: edit configrations(json)`,这样会默认生成一个．
+
+参考文档：
+
+* [官方文档](https://code.visualstudio.com/docs/languages/cpp)
+
+
+
 
 
 ### 学习类型项目
