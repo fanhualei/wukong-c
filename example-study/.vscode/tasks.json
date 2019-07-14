@@ -12,6 +12,7 @@
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.out",
+                "-lm",
                 "-Wall",
                 "-Wextra",
                 "-g"    
