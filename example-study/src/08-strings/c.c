@@ -165,10 +165,26 @@ void wk_sub()
     }
 }
 
+void wk_split()
+{
+    char text[] = "This is-www.runoob.com-website";
+    const char s[2] = "-";
+    char *token;
+
+    /* 获取第一个子字符串 */
+    token = strtok(text, s);
+    /* 继续获取其他的子字符串 */
+    while (token != NULL)
+    {
+        printf("%s\n", token);
+        token = strtok(NULL, s);
+    }
+}
+
 int main()
 {
 
-    wk_sub();
+    wk_split();
     printf("\n----------------------------\n");
     return 0;
 }
