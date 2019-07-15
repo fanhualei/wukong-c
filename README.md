@@ -150,10 +150,11 @@ $(BIN)/$(EXEC):$(SRC)/*
 具体的修改内容有：`program`,`preLaunchTask`．其中`preLaunchTask`是用来关联一个`task`用来在执行前，先编译一下代码．如果不怕麻烦，每次debug前手工执行make，与可以不加`preLaunchTask`
 
 ```json
+// Use IntelliSense to learn about possible attributes.
+// Hover to view descriptions of existing attributes.
+// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+
     "version": "0.2.0",
     "configurations": [
 
@@ -164,7 +165,7 @@ $(BIN)/$(EXEC):$(SRC)/*
             "request": "launch",
             "program": "${workspaceFolder}/bin/main",
             "args": [],
-            "stopAtEntry": false,
+            "stopAtEntry": false,d
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
@@ -187,9 +188,10 @@ $(BIN)/$(EXEC):$(SRC)/*
   执行了make命令
 
 ```json
+// See https://go.microsoft.com/fwlink/?LinkId=733558
+// for the documentation about the tasks.json format
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
+
     "version": "2.0.0",
     "tasks": [
         {
@@ -244,6 +246,39 @@ $(BIN)/$(EXEC):$(SRC)/*
 * 参考了，[菜鸟－C 语言教程](https://www.runoob.com/cprogramming/c-tutorial.html)
 * 代码中的注释，有菜鸟网站对应的HTTP地址．
 * 每个章节一个目录，如果没有代码的章节，没有目录，跳过．
+* args中要添加 -lm,因为引入和数学基本类库
+
+```json
+// See https://go.microsoft.com/fwlink/?LinkId=733558 
+// for the documentation about the tasks.json format
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "gcc build active file",
+            "command": "/usr/bin/gcc",
+            "args": [
+                
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.out",
+                "-lm",
+                "-Wall",
+                "-Wextra",
+                "-g"    
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+
+    ]
+}
+```
 
 
 
