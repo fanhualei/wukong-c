@@ -3,6 +3,8 @@
         "limits.h": "c",
         "string.h": "c",
         "errno.h": "c",
-        "ctype.h": "c"
+        "ctype.h": "c",
+        "unistd.h": "c",
+        "stdio.h": "c"
     }
 }
