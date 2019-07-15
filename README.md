@@ -296,9 +296,132 @@ $(BIN)/$(EXEC):$(SRC)/*
 
 例如`ffmpeg`二次开发，那么就需要引用第三方类库，像这类文件应该如何搭建环境呢？
 
+在搭建`ffmpeg`开发环境时，最主要的是要做好makefile文件
 
 
 
+#### 第一步：建立makefile文件
+
+通过`vscode`传入一个文件名称，并且编译，同时进行debug．
+
+这个文件通过`shell pkg-config`来得到`ffmpeg`的头文件和`lib`包．
+
+```makefile
+CC      := gcc
+BIN		:= bin
+SRC		:= src
+
+# 使用pkg-config得到ffmpeg的头文件与lib
+FFMPEG_LIBS=    libavdevice                        \
+                libavformat                        \
+                libavfilter                        \
+                libavcodec                         \
+                libswresample                      \
+                libswscale                         \
+                libavutil                          \
+# CFLAGS例如：-I/usr/local/include -Wall -g
+# https://www.jianshu.com/p/70858c4e6f5e
+# LDLIBS例如：-L/usr/local/lib -lavdevice -lm -ldl -lz -pthread -lavfilter -lm -ldl -lz -pthread -lavformat -lm -ldl -lz -pthread -lavcodec -lm -ldl -lz -pthread -lswresample -lm -lswscale -lm -lavutil -lm
+
+CFLAGS := $(shell pkg-config --cflags $(FFMPEG_LIBS))
+CFLAGS += -Wall -g
+LDLIBS := $(shell pkg-config --libs $(FFMPEG_LIBS)) $(LDLIBS)
+
+# 从外部传入一个文件名字，进行编译, CFILES 是要编译的c文件，如果要编辑多个c，那么就要通过if判断，来生成多个c编译内容．
+F  :=avio_dir_cmd
+CFILES :=$(F).c
 
 
+.PHONY : all
+
+
+all:$(BIN)/$(F)
+	@echo "\nmake all ok:" $(BIN)/$(F)
+
+run:all
+	$(BIN)/$(F) 
+
+clean:
+	rm -rf $(BIN)/$(F)
+	@echo "clean ok"
+
+cleanAll:
+	rm -rf $(BIN)/*
+	@echo "clean all ok"	
+	
+$(BIN)/$(F):$(SRC)/$(CFILES)
+	$(CC) $^  $(CFLAGS) $(LDLIBS)   -o $@ 
+
+```
+
+
+
+#### 第二步：写一个.c文件
+
+将`ffmpeg`的两个例子文件复制到`src`目录下．
+
+#### 第三步：进行调试配置
+
+
+
+> 添加一个launch.json文件
+
+主要修改了`program`
+
+```json
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "(gdb) Launch",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}",
+                "args": [],
+                "stopAtEntry": false,
+                "cwd": "${workspaceFolder}",
+                "environment": [],
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ],
+                "preLaunchTask": "gcc build active file"
+            }
+        ]
+    }
+```
+
+
+
+> 添加tasks.json文件
+
+核心是添加了`make F=${fileBasenameNoExtension}`，来执行当前打开的文件．
+
+```json
+// See https://go.microsoft.com/fwlink/?LinkId=733558
+// for the documentation about the tasks.json format
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "gcc build active file",
+            "command": "make F=${fileBasenameNoExtension}",
+            "args": [],
+            "options": {},
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}
+```
 

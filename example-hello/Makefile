@@ -25,6 +25,7 @@ run:all
 
 clean:
 	rm -rf $(BIN)/$(EXEC)
+	@echo "clean ok"
 
 # 将src下的文件都编译了
 $(BIN)/$(EXEC):$(SRC)/*
