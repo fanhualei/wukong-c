@@ -2,9 +2,19 @@
 
 为了能快速上手c开发，撰写了这个文档．
 
+> 目录
+
+* [前提条件](#前提条件)
+* [下载代码](下载代码)
+* [Git日常操作](#git日常操作)
+* [环境搭建](#环境搭建)
+  * [单一工程项目](#单一工程项目)
+  * [学习类型项目](#学习类型项目)
+  * [引用第三方库项目](#引用第三方库项目)
 
 
-> 前提条件
+
+## 前提条件
 
 * 环境
   * ubuntu(推荐)
@@ -165,7 +175,7 @@ $(BIN)/$(EXEC):$(SRC)/*
             "request": "launch",
             "program": "${workspaceFolder}/bin/main",
             "args": [],
-            "stopAtEntry": false,d
+            "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
@@ -279,6 +289,12 @@ $(BIN)/$(EXEC):$(SRC)/*
     ]
 }
 ```
+
+
+
+### 引用第三方库项目
+
+例如`ffmpeg`二次开发，那么就需要引用第三方类库，像这类文件应该如何搭建环境呢？
 
 
 
