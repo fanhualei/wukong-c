@@ -1,6 +1,13 @@
     // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+
+    /**
+        avio_dir_cmd.c args:"list","resources"
+        avio_reading.c args:"resources/test.mp4"
+    */
+
+
     {
         "version": "0.2.0",
         "configurations": [
@@ -9,7 +16,7 @@
                 "type": "cppdbg",
                 "request": "launch",
                 "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}",
-                "args": ["list","resources"],
+                "args": ["resources/test.mp4"],
                 "stopAtEntry": false,
                 "cwd": "${workspaceFolder}",
                 "environment": [],
