@@ -10,6 +10,7 @@ FFMPEG_LIBS=    libavdevice                        \
                 libswresample                      \
                 libswscale                         \
                 libavutil                          \
+				sdl2                               \
 # CFLAGS例如：-I/usr/local/include -Wall -g
 # https://www.jianshu.com/p/70858c4e6f5e
 # LDLIBS例如：-L/usr/local/lib -lavdevice -lm -ldl -lz -pthread -lavfilter -lm -ldl -lz -pthread -lavformat -lm -ldl -lz -pthread -lavcodec -lm -ldl -lz -pthread -lswresample -lm -lswscale -lm -lavutil -lm

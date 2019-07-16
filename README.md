@@ -425,3 +425,70 @@ $(BIN)/$(F):$(SRC)/$(CFILES)
 }
 ```
 
+
+
+### SDL环境的搭建
+
+
+
+> 安装SDL
+
+[官网说明：](http://wiki.libsdl.org/Installation#Linux.2FUnix)
+
+```shell
+// 下面安装一个hg的版本控制工具
+sudo apt install mercurial
+hg clone https://hg.libsdl.org/SDL SDL
+cd SDL
+mkdir build
+cd build
+../configure
+make
+sudo make install
+
+```
+
+
+
+> 引用SDL
+
+
+
+如果你安装了SDL，你可以通过`sdl2-config`来编译你的程序
+
+```powershell
+gcc -o myprogram myprogram.c `sdl2-config --cflags --libs`
+
+# 单独执行一下命令，会得到下面信息
+sdl2-config --cflags --libs
+# -I/usr/local/include/SDL2 -D_REENTRANT -L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2
+
+# 也可通过下面得到,注意大小写，通过pkg-config --list-all 可以看到所有的库．
+pkg-config --cflags sdl2
+pkg-config --libs sdl2
+```
+
+
+
+> 在ffmpeg的工程里面，进行SDL实验．
+
+主要在`Makefile`中的`FFMPEG_LIBS`中添加`sdl2`，这样能打包相关的头文件与类库．做实验，没有必要弄的太仔细了，多引用一些没有关系．
+
+
+
+> 编译过程中错误的处理
+
+*  [I get the error: "no video devices available"](http://wiki.libsdl.org/FAQLinux?highlight=(No)|(available)|(video)|(device)#I_get_the_error:_.22no_video_devices_available.22)
+
+```shell
+# 下面是重新安装x11
+sudo apt-get install libxpm-dev
+# 安装完毕，删除build目录，然后重新执行
+# 中间如果出现错误，那么就按照提示，安装相应的包．
+../configure
+make
+sudo make install
+```
+
+
+
