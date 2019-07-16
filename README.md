@@ -492,3 +492,8 @@ sudo make install
 
 
 
+> 运行结果
+
+![alt](example-ffmpeg/doc/imgs/play-result.png)
+
+

@@ -209,3 +209,24 @@ ffmpeg -ss 0  -i aaa.mp4 -to 30  -c copy  test.mp4
 ### 添加logo-filtering_video.c
 
 <<ffmpeg从入门到精通>>的10.4章有讲解
+
+
+
+## SDL开发的例子
+
+在使用的过程中，参考了[Dwyane05博客](https://blog.csdn.net/cyf15238622067/article/category/8096110)
+
+
+
+### 显示一个窗口
+
+`sdl-hello.c`例子
+
+![alt](doc/imgs/sdl-hello-result.png)
+
+### 播放一个视频
+
+`player.c`例子
+
+![alt](doc/imgs/play-result.png)
+

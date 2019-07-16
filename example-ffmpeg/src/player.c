@@ -95,8 +95,8 @@ int main(int argc, char* argv[])
 	SDL_Texture* sdlTexture = SDL_CreateTexture(sdlRenderer,pixformat, SDL_TEXTUREACCESS_STREAMING,pixel_w,pixel_h);
 
 	FILE *fp=NULL;
-	// fp=fopen("resources/test_yuv420p_320x180.yuv","rb+");
-	fp=fopen("resources/test.mp4","rb+");
+	fp=fopen("resources/test_yuv420p_320x180.yuv","rb+");
+	//fp=fopen("resources/test.mp4","rb+");
 
 	if(fp==NULL){
 		printf("cannot open this file\n");
