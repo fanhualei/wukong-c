@@ -14,6 +14,8 @@
 
 ## 目录操作-avio_dir_cmd.c
 
+为了debug这个例子，我在`launch.json`中添加了参数:`"args": ["list","resources"]`,如果要debug其他的例子，请将这个参数删除．
+
 
 
 > 功能概述
