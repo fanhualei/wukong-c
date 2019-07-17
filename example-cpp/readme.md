@@ -2,7 +2,11 @@
 
 `c`与`c++`是想通的，学完`c`后，顺便抽空把`c++`也给过了．
 
-其中参考了[菜鸟c++](https://www.runoob.com/cplusplus/cpp-tutorial.html)
+其中参考了
+
+* [菜鸟c++](https://www.runoob.com/cplusplus/cpp-tutorial.html)
+* [c++中文网教程](http://c.biancheng.net/cplus/)
+* [c++ stl库快速入门](http://c.biancheng.net/stl/)
 
 
 
