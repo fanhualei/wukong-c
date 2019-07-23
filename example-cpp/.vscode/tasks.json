@@ -8,7 +8,8 @@
                 "-g",
                 "-Wall",
                 "${file}",
-                "-lpthread"
+                "-lpthread",
+                "-std=c++11",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.out"
             ],
