@@ -497,3 +497,96 @@ sudo make install
 ![alt](example-ffmpeg/doc/imgs/play-result.png)
 
 
+
+## 十个经典的C开源项目代码
+
+参考：https://blog.csdn.net/you_shou/article/details/69372162
+
+
+
+### 1：Webbench
+
+> 简介
+
+Webbench是一个在linux下使用的非常简单的网站压测工具。它使用fork()模拟多个客户端同时访问我们设定的URL，测试网站在压力下工作的性能，最多可以模拟3万个并发连接去测试网站的负载能力。Webbench使用C语言编写, 代码实在太简洁，源码加起来不到600行。下载链接：http://home.tiscali.cz/~cz210552/webbench.html
+
+
+
+> 使用方法
+
+[webbench的详细使用](https://www.cnblogs.com/sustudy/p/5205071.html)
+
+```shell
+# -c 多少个客户端同时并发 -t 并发时间
+./webbench -c 1000 -t 60 http://www.baidu.com
+```
+
+
+
+> 如何调试
+
+在`vscode`中添加下面两个文件，然后设置断点就可以调试了
+
+`launch.json`
+
+```json
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+{
+
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "gcc build and debug active file",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/webbench",
+            "args": [
+                "-c 10",
+                "-t 6",
+                "http://www.baidu.com/"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "gcc build active file",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}
+```
+
+`tasks.json`
+
+```json
+// See https://go.microsoft.com/fwlink/?LinkId=733558 
+// for the documentation about the tasks.json format
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "gcc build active file",
+            "command": "make",
+        }
+    ]
+}
+```
+
+
+
+
+
+> 代码分析
+
+[Webbench实现与详解](https://blog.csdn.net/weixin_38333555/article/details/81457817)
